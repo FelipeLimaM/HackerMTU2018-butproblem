@@ -1,0 +1,3 @@
+# (Long,Lat,Zoom) para centrar o mapa e poder tirar prints,
+# assim da pra gerar heatmaps sequenciais e comparar/fazer gif
+gmplot.GoogleMapPlotter(-23.96045, -46.36927, 13)
