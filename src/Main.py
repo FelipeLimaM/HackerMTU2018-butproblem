@@ -6,6 +6,9 @@ from ConvertToCVRP import createCVRPInput
 from DrawMap import drawMap
 from BilhetagemStops import getClosestBusStop
 from ConvertCVRPSolToCoords import getCoordsFromCVRPSol
+from BilhetagemSplitDayTime import splitDay
+from subprocess import call
+from BilhetagemComeAndGo import filterBilhetagemComeAndGo
 
 lines = []
 busses = []
@@ -24,7 +27,13 @@ with open("in/test.txt", "rb") as f:
 print("Removendo linhas e onibus nao interessados")
 data = getBilhetagemWithLineAndBus(lines, busses)
 
-#filtro de horario entra aqui
+print("Filtrando pelos usuarios que vao e voltam")
+data = filterBilhetagemComeAndGo(data)
+
+print("Filtrando os horarios (manha, tarde, noite)")
+data_times = splitDay(data)
+
+data = data_times[0]
 
 print("Fazendo o match de bilhetagem com os dados do GPS")
 data = getBilhetagemWithCoords(data, lines, busses)
@@ -39,7 +48,8 @@ print("Criando o input para o CVRP")
 filename = createCVRPInput(data, len(lines))
 
 print("Rodando o algoritmo do CVRP")
-#roda o algoritmo do CVRP
+cmd = "./bcp/cvrp.e -i {vrpfile} -o {outfile} -t 3000 -g -s".format(vrpfile="/tmp/" + filename + ".vrp", outfile="/tmp/" + filename + ".vrp")
+call(cmd, shell=True)
 
 print("Transferindo a solucao de ID para coordenadas")
 solutionCoords = getCoordsFromCVRPSol(filename)

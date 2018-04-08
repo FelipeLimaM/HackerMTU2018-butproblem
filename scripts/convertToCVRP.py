@@ -2,11 +2,11 @@ import csv
 	 
 points = []
 count = 0
-with open("../data/RBMS_line_904_bus_8611_freq_filtered.txt", "rb") as f:
+with open("../data/unique_final.txt", "rb") as f:
 	reader = csv.reader(f)
 	for row in reader:
 		count += 1
-		points.append((row[0], row[1]))
+		points.append((row[1], row[2]))
 
 print("NAME : H-n" + str(count) + "-k1")
 print("COMMENT : (Hackathon EMTU)")

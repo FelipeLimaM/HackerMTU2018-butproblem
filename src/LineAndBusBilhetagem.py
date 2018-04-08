@@ -11,6 +11,8 @@ def getBilhetagemWithLineAndBus(lines, busses):
 		rows = []
 		
 		for row in reader:
+			row = [x.strip() for x in row]
+			
 			if flag:
 				line = int(getOnlyNumbers(row[3]))
 				bus = int(getOnlyNumbers(row[6]))
