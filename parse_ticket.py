@@ -35,7 +35,9 @@ with open('dados_bilhetagem_RMBS_Onibus.csv', 'rb') as csvfile:
 
     with open("outputfile.csv", 'w') as csvfile:
         writer = csv.writer(csvfile)
-        field = ["cartao",]
-        writer.writerow(field)
+#        field = ["RM,"cartao","uso_datahora","Linha","Sentido","tipo_embarque","prefixo","aplicacao","Desc_Aplic","TipoPassagem"]
+#        writer.writerow(field)
         for i in xrange(0,len(list_VT),2):
-            list_VT
+            list_VT[i][2] = str( list_VT[i][2] )
+
+            writer.writerow(list_VT[i])
