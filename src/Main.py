@@ -48,7 +48,7 @@ print("Criando o input para o CVRP")
 filename = createCVRPInput(data, len(lines))
 
 print("Rodando o algoritmo do CVRP")
-cmd = "./bcp/cvrp.e -i {vrpfile} -o {outfile} -t 3000 -g -s".format(vrpfile="/tmp/" + filename + ".vrp", outfile="/tmp/" + filename + ".vrp")
+cmd = "./bcp/cvrp.e -i {vrpfile} -o {outfile} -t 3000 -s".format(vrpfile="./tmp/" + filename + ".vrp", outfile="./tmp/" + filename + ".out")
 call(cmd, shell=True)
 
 print("Transferindo a solucao de ID para coordenadas")

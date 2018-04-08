@@ -11,6 +11,7 @@ def getBusStopsWithFrequency(data):
 	
 	out = []
 	for (lat, lon) in h.keys():
-		out.append((lat, lon, str(h[(lat, lon)])))
+		if h[(lat, lon)] > 10:
+			out.append((lat, lon, str(h[(lat, lon)])))
 	
 	return out

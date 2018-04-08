@@ -3,7 +3,7 @@ def getCoordsFromCVRPSol(filename):
 
 	#cria uma hash de id -> coords
 	i = 0
-	with open("/tmp/" + filename + ".vrp", "rb") as f:
+	with open("./tmp/" + filename + ".vrp", "rb") as f:
 		for row in f:
 			i += 1
 			if i >= 8:
@@ -15,7 +15,7 @@ def getCoordsFromCVRPSol(filename):
 
 	#retorna listas de coords para cada rota
 	coords = []
-	with open("/tmp/" + filename + ".out", "rb") as f:
+	with open("./tmp/" + filename + ".out", "rb") as f:
 		for row in f:
 			aux = []
 			row = row.split()
