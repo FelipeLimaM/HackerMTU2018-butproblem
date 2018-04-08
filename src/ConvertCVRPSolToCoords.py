@@ -14,7 +14,7 @@ def getCoordsFromCVRPSol(filename):
 				h[int(row[0])] = (row[1], row[2])
 
 	#retorna listas de coords para cada rota
-	coords []
+	coords = []
 	with open("../tmp/" + filename + ".out", "rb") as f:
 		for row in f:
 			aux = []

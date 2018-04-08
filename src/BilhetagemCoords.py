@@ -24,7 +24,7 @@ def getBilhetagemWithCoords(data, lines, busses):
 	
 	#first read the gps data to get pairs of (time, coords)
 	for i in range(len(lines)):
-		with open("../HackerMTU2018-butproblem/data/linha_" + str(lines[i]) + "_cgs_2016_01/transmissoes_" + str(busses[i]) + "0001.csv", "rb") as f:
+		with open("../data/linha_" + str(lines[i]) + "_cgs_2016_01/transmissoes_" + str(busses[i]) + "0001.csv", "rb") as f:
 			reader = csv.reader(f)
 			flag = False
 			
@@ -39,7 +39,7 @@ def getBilhetagemWithCoords(data, lines, busses):
 	for row in data:
 		date = row[2] #timestampModulo
 		hour = DateToInt(date)
-		aux = searchBestHourFit(data, hour)
+		aux = searchBestHourFit(timesCoords, hour)
 		row.append(str(aux[0]))
 		row.append(str(aux[1]))
 	
