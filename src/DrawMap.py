@@ -16,9 +16,8 @@ def drawMap(data, solutionCoords):
 		if lon >= -46.41: #hardcoded filter
 			f = int(p[2])
 			
-			if f > 11:
-				scatter_lat.append(lat)
-				scatter_long.append(lon)
+			scatter_lat.append(lat)
+			scatter_long.append(lon)
 					
 			for i in range(f):
 				bus_stops_lat.append(lat)
@@ -35,8 +34,11 @@ def drawMap(data, solutionCoords):
 			(lat, lon) = (float(p[0]), float(p[1]))
 			sol_lat.append(lat)
 			sol_long.append(lon)
-					
-		gmap.plot(sol_lat, sol_long, 'cornflowerblue', edge_width=10)
+		
+		sol_lat.append(float(sol[0][0]))
+		sol_long.append(float(sol[0][1]))
+		
+		gmap.plot(sol_lat, sol_long, 'cornflowerblue', edge_width=5)
 
 	# Draw
 	gmap.draw("my_map.html")

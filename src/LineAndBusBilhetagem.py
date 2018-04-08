@@ -5,7 +5,7 @@ def getOnlyNumbers(x):
 	return re.search("[0-9]+", x).group(0)
 	
 def getBilhetagemWithLineAndBus(lines, busses):
-	with open("../data/RMBS_no_botoeiras2.txt", "rb") as f:
+	with open("../data/RMBS_no_botoeiras.txt", "rb") as f:
 		reader = csv.reader(f)
 		flag = False
 		rows = []
