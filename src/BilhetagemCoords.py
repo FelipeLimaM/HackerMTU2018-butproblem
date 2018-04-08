@@ -1,4 +1,5 @@
 import csv
+import bisect
 
 def DateToInt(date):
 	date = date.split()
@@ -19,6 +20,13 @@ def searchBestHourFit(A, h):
 	
 	return (A[best_index][1], A[best_index][2])
 
+'''
+@gomesar Nao testei
+'''
+def searchBestHourFit(A, h):
+	aux = bisect.bisect(A, h)
+        return A[aux][1], A[aux][2]
+	
 def getBilhetagemWithCoords(data, lines, busses):
 	timesCoords = []
 	
@@ -35,6 +43,8 @@ def getBilhetagemWithCoords(data, lines, busses):
 				
 				flag = True
 	
+        #sort
+        timesCoords.sort(key=lambda x: x[0]) # @gomesar para busca binaria
 	#for each row, find the closest time and append the coords
 	for row in data:
 		date = row[2] #timestampModulo
