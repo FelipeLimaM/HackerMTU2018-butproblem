@@ -26,8 +26,22 @@ with open("../data/RMBS_coord_freq_line_904_bus_8611.txt", "rb") as f:
 				bus_stops_lat.append(lat)
 				bus_stops_long.append(lon)
 
+sol_lat = []
+sol_long = []
+with open("../tmp/solution.txt", "rb") as f:
+	reader = csv.reader(f)
+	
+	for row in reader:
+		if row[0] == "#":
+			break
+		
+		(lat, lon) = (float(row[0]), float(row[1]))
+		sol_lat.append(lat)
+		sol_long.append(lon)
+				
 gmap.heatmap(bus_stops_lat, bus_stops_long, radius = 10, maxIntensity = 40)
 gmap.scatter(scatter_lat, scatter_long, 'cornflowerblue', size=100)
+gmap.plot(sol_lat, sol_long, 'cornflowerblue', edge_width=10)
 
 # Draw
 gmap.draw("my_map.html")
